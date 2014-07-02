@@ -1,5 +1,5 @@
 /*
- * @(#)StatisticsPlugin.java	1.0.4 30/08/13
+ * @(#)StatisticsPlugin.java	1.0.5 24/06/14
  * 
  * Copyright (c) 1999-2013 Musiques Tangentes. All Rights Reserved.
  * 
@@ -14,9 +14,9 @@ import net.algem.planning.Schedule;
 
 /**
  * Data extraction class for Music Halle's statistics.
- * (for versions of Algem > 2.8.h)
+ * (for versions of Algem >= 2.8.v)
  * @author <a href="mailto:jmg@musiques-tangentes.asso.fr">Jean-Marc Gobat</a>
- * @version 1.0.4
+ * @version 1.0.5
  * @since 1.0.0 11/10/12
  */
 public class StatisticsPlugin
@@ -419,7 +419,7 @@ public class StatisticsPlugin
               + " FROM planning, plage, action, salle"
               + " WHERE planning.jour >= '" + start + "' AND planning.jour <= '" + end + "'"
               + " AND planning.id = plage.idplanning AND plage.debut >= planning.debut AND plage.fin <= planning.fin"
-              + " AND planning.ptype = " + Schedule.COURSE_SCHEDULE + " AND planning.action = action.id"
+              + " AND planning.ptype = " + Schedule.COURSE + " AND planning.action = action.id"
               + " AND planning.lieux = salle.id";
       if (a1 != null) {
         query += " AND action.statut = " + a1;
@@ -438,7 +438,7 @@ public class StatisticsPlugin
               + " FROM planning, plage, action, salle"
               + " WHERE planning.jour  >= '" + start + "' AND planning.jour <= '" + end + "'"
               + " AND planning.id = plage.idplanning AND plage.debut >= planning.debut AND plage.fin <= planning.fin"
-              + " AND planning.ptype = " + Schedule.COURSE_SCHEDULE + " AND planning.action = action.id"
+              + " AND planning.ptype = " + Schedule.COURSE + " AND planning.action = action.id"
               + " AND planning.lieux = salle.id";
       if (a1 != null) {
         query += " AND action.statut = " + a1;
@@ -460,7 +460,7 @@ public class StatisticsPlugin
               + " WHERE planning.jour >= '" + start + "' AND planning.jour <= '" + end + "'"
               + " AND planning.id = plage.idplanning"
               + " AND plage.debut >= planning.debut AND plage.fin <= planning.fin"
-              + " AND planning.ptype = " + Schedule.COURSE_SCHEDULE
+              + " AND planning.ptype = " + Schedule.COURSE
               + " AND planning.action = action.id"
               + " AND planning.lieux = salle.id";
              
@@ -486,7 +486,7 @@ public class StatisticsPlugin
               + " WHERE planning.jour >= '" + start + "' AND planning.jour <= '" + end + "'"
               + " AND planning.id = plage.idplanning"
               + " AND plage.debut >= planning.debut AND plage.fin <= planning.fin"
-              + " AND planning.ptype = " + Schedule.COURSE_SCHEDULE
+              + " AND planning.ptype = " + Schedule.COURSE
               + " AND planning.action = action.id"
               + " AND planning.lieux = salle.id";
 
@@ -576,7 +576,7 @@ public class StatisticsPlugin
             + " FROM (SELECT DISTINCT planning.id, planning.debut, planning.fin"
             + " FROM planning, action, commande_cours, commande_module, plage pl"
             + " WHERE planning.jour >= '" + start + "' AND planning.jour <= '" + end + "'"
-            + " AND planning.ptype = " + Schedule.COURSE_SCHEDULE
+            + " AND planning.ptype = " + Schedule.COURSE
             + " AND pl.idplanning = planning.id"
             + " AND planning.action = action.id"
             + " AND commande_cours.idaction = action.id"
@@ -590,7 +590,7 @@ public class StatisticsPlugin
             + " FROM (SELECT DISTINCT planning.id, planning.debut, planning.fin"
             + " FROM planning, action, commande_cours cc, commande_module cm, plage pl"
             + " WHERE planning.jour >= '" + start + "' AND planning.jour <= '" + end + "'"
-            + " AND planning.ptype = " + Schedule.COURSE_SCHEDULE
+            + " AND planning.ptype = " + Schedule.COURSE
             + " AND pl.idplanning = planning.id"
             + " AND planning.action = action.id"
             + " AND cc.idaction = action.id"
